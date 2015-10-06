@@ -87,6 +87,7 @@ when 'debian'
 
   package node['cassandra']['package_name'] do
     action :install
+    version "#{node['cassandra']['version']}-#{node['cassandra']['release']}"
     options '--force-yes -o Dpkg::Options::="--force-confold"'
     # giving C* some time to start up
     notifies :run, 'ruby_block[sleep30s]', :immediately
